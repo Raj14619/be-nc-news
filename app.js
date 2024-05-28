@@ -1,13 +1,17 @@
 const express = require('express');
 const app = express();
-const { getTopics } = require('./controllers/topicsController');
 const db = require('./db'); // Import the database pool
-
 app.use(express.json());
+
+const { getTopics } = require('./controllers/topicsController');
+const { getAPI } = require('./controllers/apiController');
+const { getArticlesById } = require('./controllers/articlesByArticleIdController');
 
 app.get('/api/topics', getTopics);
 
-app.get('/api/', )
+app.get('/api/', getAPI);
+
+app.get('/api/articles/:article_id', getArticlesById);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
