@@ -7,6 +7,8 @@ app.use(express.json());
 
 app.get('/api/topics', getTopics);
 
+app.get('/api/', )
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: "internal server error" });
