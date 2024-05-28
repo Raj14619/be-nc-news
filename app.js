@@ -6,12 +6,18 @@ app.use(express.json());
 const { getTopics } = require('./controllers/topicsController');
 const { getAPI } = require('./controllers/apiController');
 const { getArticlesById } = require('./controllers/articlesByArticleIdController');
+const {getArticles} = require('./controllers/articlesController')
 
 app.get('/api/topics', getTopics);
 
 app.get('/api/', getAPI);
 
+
+app.get('/api/articles/', getArticles)
+
 app.get('/api/articles/:article_id', getArticlesById);
+
+
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
