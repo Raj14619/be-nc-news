@@ -37,8 +37,17 @@
           "votes": 0,
           "article_img_url": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?w=700&h=700"
 
-  }
+  },
 
+  "GET /api/articles/": {
+    "article_id": "id",
+    "title": "The Rise Of Thinking Machines: How IBM's Watson Takes On The World",
+    "topic": "coding",
+    "author": "weegembump",
+    "created_at": "Sorted by DESC Order",
+    "votes": 0,
+    "article_img_url": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?w=700&h=700"
+}
 
 
 }
