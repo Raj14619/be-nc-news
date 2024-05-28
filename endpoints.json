@@ -25,5 +25,20 @@
         }
       ]
     }
+  },
+
+  "GET /api/articles/:article_id": {
+          "article_id": "id",
+          "title": "The Rise Of Thinking Machines: How IBM's Watson Takes On The World",
+		      "topic": "coding",
+          "author": "weegembump",
+          "body": "Text from the article..",
+          "created_at": "2018-05-30T15:59:13.341Z",
+          "votes": 0,
+          "article_img_url": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?w=700&h=700"
+
   }
+
+
+
 }
