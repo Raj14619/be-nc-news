@@ -1,4 +1,4 @@
-const db = require ('../db/');
+const db = require ('../db');
 
 const fetchTopics = async () =>{
     const result = await db.query(`SELECT * FROM topics`);
