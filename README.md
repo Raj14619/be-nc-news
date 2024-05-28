@@ -1,6 +1,15 @@
 # Northcoders News API
 
-For instructions, please head over to [L2C NC News](https://l2c.northcoders.com/courses/be/nc-news).
+Requiredments: Node.js must be installed.
+
+Run the following command: "npm i" to install all required dependencies.
+
+Here are a list of commands to execute in the terminal to get the application running:
+    
+    "npm run set-up-dbs"       This command sets up the required postgreSQL databases
+    "npm run seed"             This command sets up the data in the databases
+    "prepare": "husky install" THis command installs husky
+
 
 
 
