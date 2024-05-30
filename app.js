@@ -18,7 +18,7 @@ const articlePatchController = require('./controllers/articlePatchController');
 
 const deleteCommentController = require('./controllers/deleteCommentController');
 
-
+const {getAllUsers} = require('./controllers/getAllUsersController')
 //post requests
 
 app.use(bodyParser.json());
@@ -43,6 +43,9 @@ app.patch('/api/articles/:article_id', articlePatchController.updateArticle);
 
 
 app.delete('/api/comments/:comment_id', deleteCommentController.deleteComment);
+
+app.get('/api/users', getAllUsers); // Route for getting all users
+
 
 
 app.use((err, req, res, next) => {

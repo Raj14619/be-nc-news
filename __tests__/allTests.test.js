@@ -298,3 +298,17 @@ describe('DELETE /api/comments/:comment_id', () => {
 
 
 
+describe('GET /api/users', () => {
+  test('should get all users', async () => {
+    const response = await request(app).get('/api/users').expect(200);
+
+    expect(Array.isArray(response.body)).toBe(true);
+
+    response.body.forEach(user => {
+      expect(user).toHaveProperty('username');
+      expect(user).toHaveProperty('name');
+      expect(user).toHaveProperty('avatar_url');
+    });
+  });
+});
+
