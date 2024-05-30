@@ -11,6 +11,10 @@ const { getAllCommentsForAnArticle } = require('./controllers/AllCommentsForAnAr
 const bodyParser = require('body-parser');
 
 const commentsController = require('./controllers/commentsController');
+
+
+const articlePatchController = require('./controllers/articlePatchController');
+
 //post requests
 
 app.use(bodyParser.json());
@@ -31,13 +35,16 @@ app.get('/api/articles/:article_id/comments', getAllCommentsForAnArticle)
 app.post('/api/articles/:article_id/comments', commentsController.postComment);
 
 
+app.patch('/api/articles/:article_id', articlePatchController.updateArticle);
+
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: "internal server error" });
 });
 
-// app.listen(4000, () => {
-//   console.log("server running on port 4000");
-// });
+app.listen(4000, () => {
+  console.log("server running on port 4000");
+});
 
 module.exports = app; // Export the app for testing

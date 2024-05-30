@@ -231,3 +231,54 @@ test('sends status code 404 and an empty object of topics to the client when mak
 
 
 })
+
+
+
+//q7 to do
+
+
+//q8 test cases
+
+describe('PATCH /api/articles/:article_id', () => {
+  it('should update an article with valid inc_votes', async () => {
+    const articleId = 1;
+    const newVotes = 10;
+
+    const response = await request(app)
+        .patch(`/api/articles/${articleId}`)
+        .send({ inc_votes: newVotes })
+        .expect(200);
+
+    // Ensure that the response body contains the updated article
+    expect(response.body).toHaveProperty('article_id', articleId);
+    expect(response.body).toHaveProperty('votes', newVotes);
+})
+
+  it('should return 400 if inc_votes is not provided', async () => {
+      const articleId = 1;
+
+      await request(app)
+          .patch(`/api/articles/${articleId}`)
+          .expect(400);
+  });
+
+  it('should return 400 if inc_votes is not a number', async () => {
+      const articleId = "1";
+
+      await request(app)
+          .patch(`/api/articles/${articleId}`)
+          .send({ inc_votes: 'not_a_number' })
+          .expect(400);
+  });
+
+  it('should return 404 if article_id does not exist', async () => {
+      const articleId = 999;
+
+      await request(app)
+          .patch(`/api/articles/${articleId}`)
+          .send({ inc_votes: 10 })
+          .expect(404);
+  });
+});
+
+
