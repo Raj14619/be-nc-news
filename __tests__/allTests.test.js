@@ -249,7 +249,7 @@ describe('PATCH /api/articles/:article_id', () => {
         .send({ inc_votes: newVotes })
         .expect(200);
 
-    // Ensure that the response body contains the updated article
+    // check that the response body contains the updated article
     expect(response.body).toHaveProperty('article_id', articleId);
     expect(response.body).toHaveProperty('votes', newVotes);
 })
@@ -280,5 +280,21 @@ describe('PATCH /api/articles/:article_id', () => {
           .expect(404);
   });
 });
+
+
+
+// q9
+describe('DELETE /api/comments/:comment_id', () => {
+  it('should delete a comment by comment_id', async () => {
+    // 
+    const commentIdToDelete = 1;
+
+    // Send a DELETE request to the endpoint
+    const response = await request(app)
+      .delete(`/api/comments/${commentIdToDelete}`)
+      .expect(204); // Expect a 204 No Content response
+  });
+});
+
 
 

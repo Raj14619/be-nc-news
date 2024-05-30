@@ -15,6 +15,10 @@ const commentsController = require('./controllers/commentsController');
 
 const articlePatchController = require('./controllers/articlePatchController');
 
+
+const deleteCommentController = require('./controllers/deleteCommentController');
+
+
 //post requests
 
 app.use(bodyParser.json());
@@ -36,6 +40,9 @@ app.post('/api/articles/:article_id/comments', commentsController.postComment);
 
 
 app.patch('/api/articles/:article_id', articlePatchController.updateArticle);
+
+
+app.delete('/api/comments/:comment_id', deleteCommentController.deleteComment);
 
 
 app.use((err, req, res, next) => {
