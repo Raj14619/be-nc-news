@@ -24,8 +24,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "internal server error" });
 });
 
-// app.listen(4000, () => {
-//   console.log("server running on port 4000");
-// });
+app.listen(4000, () => {
+  console.log("server running on port 4000");
+});
 
 module.exports = app; // Export the app for testing
