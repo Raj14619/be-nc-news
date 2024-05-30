@@ -1,4 +1,4 @@
-const {fetchArticles} = require('../models/articlesModel')
+const {insertCommentsForAnArticleControillers} = require('../models/articlesModel')
 
 const getArticles = async(req,res,next) =>{
 

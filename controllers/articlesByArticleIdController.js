@@ -8,10 +8,10 @@ const getArticlesById = async(req,res,next) =>{
 
     let value = parseInt(arr[0], 10)
 
-    console.log(value)
+    //console.log(value)
 
    if(isNaN(value)){
-    console.log("Hi")
+    //console.log("Hi")
     res.status(400).send("You have entered an article_id which is not a number")
    }
 
