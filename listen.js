@@ -5,14 +5,21 @@ const runSeed = require('./db/seeds/run-seed.js')
 
 
 
-//new changes made
+// New changes made
 db.query('DROP DATABASE IF EXISTS nc_news_test;')
-db.query('DROP DATABASE IF EXISTS nc_news;')
-db.query('CREATE DATABASE nc_news_test;')
-db.query('CREATE DATABASE nc_news;')
-
-
-runSeed();
-
-
-app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
+  .then(() => db.query('DROP DATABASE IF EXISTS nc_news;'))
+  .then(() => db.query('CREATE DATABASE nc_news_test;'))
+  .then(() => db.query('CREATE DATABASE nc_news;'))
+  .then(() => {
+    // After creating databases, run the seed function
+    return runSeed();
+  })
+  .then(() => {
+    // Start the server after seeding the database
+    app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
+  })
+  .catch((error) => {
+    // Handle any errors
+    console.error('Error setting up databases and seeding:', error);
+    process.exit(1); // Exit the process with a non-zero status code
+  });
