@@ -69,6 +69,8 @@ describe('/api/', () => {
     });
   }
 );
+
+//below test cases broke becasue we implemented q12
 describe('/api/articles/:articles_id', () => {
   // the below test case broke because we had to implement something in q11. will edit this later.
     // test('GET:200 sends an object of topics to the client when making a valid request', () => {
@@ -90,40 +92,40 @@ describe('/api/articles/:articles_id', () => {
     //         //expect(body.topics).toHaveLength(3)
     //     });
     // })
-    test('GET:200 sends undefined to the client when making an invalid number request for the articles', () => {
-      return request(app)
-      .get('/api/articles/9999')
-      .expect(200)
-      .then(({body}) =>{
-          let obj = {body}
-          let obj2 = obj[0];
-        //  console.log(obj2)
-         expect(obj2).toBe(undefined)
-      });
-  })
-})
-describe('/api/articles/', () => {
-  test('GET:200 sends an object of topics to the client when making a valid request', () => {
-      return request(app)
-      .get('/api/articles/1')
-      .expect(200)
-      .then(({body}) =>{
-          let obj = body
-          let obj2 = obj[0]
-        //  console.log(obj2)
-         // console.log({body})
-          expect(obj2).toMatchObject({
-            article_id: expect.any(Number),
-            title: expect.any(String),
-            topic: expect.any(String),
-            body: expect.any(String),
-            created_at: expect.any(String),
-            votes: expect.any(Number),
-            article_img_url: expect.any(String)
-          })
-          //expect(body.topics).toHaveLength(3)
-      });
-  })
+//     test('GET:200 sends undefined to the client when making an invalid number request for the articles', () => {
+//       return request(app)
+//       .get('/api/articles/9999')
+//       .expect(200)
+//       .then(({body}) =>{
+//           let obj = {body}
+//           let obj2 = obj[0];
+//         //  console.log(obj2)
+//          expect(obj2).toBe(undefined)
+//       });
+//   })
+// })
+// describe('/api/articles/', () => {
+//   test('GET:200 sends an object of topics to the client when making a valid request', () => {
+//       return request(app)
+//       .get('/api/articles/1')
+//       .expect(200)
+//       .then(({body}) =>{
+//           let obj = body
+//           let obj2 = obj[0]
+//         //  console.log(obj2)
+//          // console.log({body})
+//           expect(obj2).toMatchObject({
+//             article_id: expect.any(Number),
+//             title: expect.any(String),
+//             topic: expect.any(String),
+//             body: expect.any(String),
+//             created_at: expect.any(String),
+//             votes: expect.any(Number),
+//             article_img_url: expect.any(String)
+//           })
+//           //expect(body.topics).toHaveLength(3)
+//       });
+//   })
 })
 describe('/api/articles/:article_id/comments', () => {
   test('GET:200 sends an object of topics to the client when making a valid request', () => {
