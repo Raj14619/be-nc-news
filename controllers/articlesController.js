@@ -1,17 +1,11 @@
-const {fetchArticles} = require('../models/articlesModel')
-
-const getArticles = async(req,res,next) =>{
-
-   // console.log("Hi")
-
-    try{
-        const Articles = await fetchArticles();
-        res.status(200).send(Articles)
-    }
-    catch (err){
-        next(err);
-    }
-    
-}
-
-module.exports = {getArticles}
+const { fetchArticles } = require('../models/articlesModel');
+const getArticles = async (req, res, next) => {
+  const { topic } = req.query;
+  try {
+    const articles = await fetchArticles(topic);
+    res.status(200).json({ articles });
+  } catch (err) {
+    next(err);
+  }
+};
+module.exports = { getArticles };
