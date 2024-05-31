@@ -46,12 +46,12 @@ app.delete('/api/comments/:comment_id', deleteCommentController.deleteComment);
 app.get('/api/users', getAllUsers); // Route for getting all users
 
 
-
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: "internal server error" });
 });
 
+// UNCOMMENT BELOW CODE WHEN TESTING ON LOCAL PC
 // app.listen(4000, () => {
 //   console.log("server running on port 4000");
 // });
