@@ -4,12 +4,13 @@ const { PORT = 9090 } = process.env;
 //const runSeed = require('./db/seeds/run-seed.js')
 
 
-const devData = require('../data/development-data/index.js');
-const seed = require('./seed.js');
-const db = require('../connection.js');
+const devData = require('./db/data/development-data/index.js');
+const seed = require('./db/seeds/seed.js');
+const db = require('./db/connection.js');
 
-const runSeed = () => {
-    return seed(devData).then(() => db.end());
+const runSeed = async () => {
+    await seed(devData);
+    return await db.end();
   };
   
   runSeed();
