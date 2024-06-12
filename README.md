@@ -1,6 +1,8 @@
 # Northcoders News API
 
-Requiredments: Node.js must be installed.
+Example URL for the hosted API: https://be-nc-news-pmo9.onrender.com/api/articles/1
+
+Requirements: Node.js must be installed.
 
 Run the following command: "npm i" to install all required dependencies.
 
