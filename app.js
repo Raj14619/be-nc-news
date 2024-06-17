@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const db = require('./db'); // Import the database pool
+const cors = require('cors');
+
+app.use(cors());
 app.use(express.json());
 
 const { getTopics } = require('./controllers/topicsController');
