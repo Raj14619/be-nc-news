@@ -17,8 +17,9 @@ async function updateArticle(req, res, next) {
             return res.status(400).json({ error: "Please provide a valid number for 'inc_votes'" });
         }
 
-        // Calculate the new votes value
+        // Get the current votes
         const currentVotes = existingArticle.rows[0].votes;
+        // Calculate the new votes value
         const newVotes = currentVotes + inc_votes;
 
         // Update the article's votes in the database
