@@ -6,6 +6,7 @@ const fetchArticlesById = async (input) => {
       article.article_id, 
       article.title, 
       article.topic, 
+      article.body,
       article.author, 
       article.created_at, 
       article.votes, 
