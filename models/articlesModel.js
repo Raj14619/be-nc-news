@@ -1,8 +1,7 @@
-const db = require ('../db');
+// Assuming your db.js or similar setup handles database connections and queries internally
+const db = require('../db');
 
 const fetchArticles = async (sortCriteria = 'created_at', sortOrder = 'desc') => {
-  const client = await pool.connect();
-
   try {
     let orderByClause = '';
     switch (sortCriteria) {
@@ -20,7 +19,7 @@ const fetchArticles = async (sortCriteria = 'created_at', sortOrder = 'desc') =>
         break;
     }
 
-    const result = await client.query(`
+    const queryString = `
       SELECT 
         article.article_id, 
         article.title, 
@@ -39,11 +38,14 @@ const fetchArticles = async (sortCriteria = 'created_at', sortOrder = 'desc') =>
       ON 
         article.article_id = comment.article_id
       ${orderByClause}
-    `);
+    `;
+
+    const result = await db.query(queryString); // Assuming db.query handles the database query
 
     return result.rows;
-  } finally {
-    client.release();
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    throw error;
   }
 };
 
