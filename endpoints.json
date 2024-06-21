@@ -1,16 +1,16 @@
 {
   "GET /api": {
-    "description": "serves up a json representation of all the available endpoints of the api"
+    "description": "Serves up a JSON representation of all the available endpoints of the API."
   },
   "GET /api/topics": {
-    "description": "serves an array of all topics",
+    "description": "Serves an array of all topics.",
     "queries": [],
     "exampleResponse": {
       "topics": [{ "slug": "football", "description": "Footie!" }]
     }
   },
   "GET /api/articles": {
-    "description": "serves an array of all articles",
+    "description": "Serves an array of all articles.",
     "queries": ["author", "topic", "sort_by", "order"],
     "exampleResponse": {
       "articles": [
@@ -26,28 +26,88 @@
       ]
     }
   },
-
   "GET /api/articles/:article_id": {
-          "article_id": "id",
-          "title": "The Rise Of Thinking Machines: How IBM's Watson Takes On The World",
-		      "topic": "coding",
-          "author": "weegembump",
-          "body": "Text from the article..",
-          "created_at": "2018-05-30T15:59:13.341Z",
-          "votes": 0,
-          "article_img_url": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?w=700&h=700"
-
-  },
-
-  "GET /api/articles/": {
+    "description": "Retrieve a specific article by ID.",
     "article_id": "id",
     "title": "The Rise Of Thinking Machines: How IBM's Watson Takes On The World",
     "topic": "coding",
     "author": "weegembump",
-    "created_at": "Sorted by DESC Order",
+    "body": "Text from the article..",
+    "created_at": "2018-05-30T15:59:13.341Z",
     "votes": 0,
     "article_img_url": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?w=700&h=700"
-}
-
-
+  },
+  "GET /api/articles/:article_id/comments": {
+    "description": "Retrieve all comments for a specific article.",
+    "article_id": "id",
+    "exampleResponse": {
+      "comments": [
+        {
+          "comment_id": 1,
+          "votes": 16,
+          "created_at": "2017-11-22T12:36:03.389Z",
+          "author": "butter_bridge",
+          "body": "Vitae aliquam perspiciatis omnis rem eaque."
+        }
+      ]
+    }
+  },
+  "POST /api/articles/:article_id/comments": {
+    "description": "Add a new comment to a specific article.",
+    "article_id": "id",
+    "requestBody": {
+      "username": "string",
+      "body": "string"
+    },
+    "exampleResponse": {
+      "comment": {
+        "comment_id": 10,
+        "votes": 0,
+        "created_at": "2022-01-01T12:00:00.000Z",
+        "author": "new_user",
+        "body": "New comment text."
+      }
+    }
+  },
+  "PATCH /api/articles/:article_id": {
+    "description": "Update a specific article.",
+    "article_id": "id",
+    "requestBody": {
+      "title": "string",
+      "body": "string"
+    },
+    "exampleResponse": {
+      "article": {
+        "article_id": 1,
+        "title": "Updated Article Title",
+        "topic": "coding",
+        "author": "weegembump",
+        "body": "Updated article content...",
+        "created_at": "2022-01-01T12:00:00.000Z",
+        "votes": 0
+      }
+    }
+  },
+  "DELETE /api/comments/:comment_id": {
+    "description": "Delete a specific comment by ID.",
+    "comment_id": "id",
+    "exampleResponse": {
+      "message": "Comment deleted successfully."
+    }
+  },
+  "GET /api/users": {
+    "description": "Retrieve all users.",
+    "exampleResponse": {
+      "users": [
+        {
+          "username": "weegembump",
+          "avatar_url": "https://example.com/avatar.jpg"
+        },
+        {
+          "username": "butter_bridge",
+          "avatar_url": "https://example.com/avatar2.jpg"
+        }
+      ]
+    }
+  }
 }
