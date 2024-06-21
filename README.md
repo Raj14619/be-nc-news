@@ -6,7 +6,7 @@
 
 ### Front-End
 
-**_[Front-End Repo ]https://github.com/Raj14619/nc-news/)**
+**_[Front-End Repo ](https://github.com/Raj14619/nc-news/) **
 
 ## Summary
 
