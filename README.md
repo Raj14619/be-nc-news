@@ -1,5 +1,8 @@
 # NCNews
 
+**_[API endpoints](https://github.com/Raj14619/be-nc-news/blob/main/endpoints.json)_**
+
+
 **Api Built with ExpressJS & PSQL**
 
 **_[Interact with api](https://be-nc-news-pmo9.onrender.com/api/)_**
