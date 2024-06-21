@@ -2,11 +2,11 @@
 
 **Api Built with ExpressJS & PSQL**
 
-**_[Interact with api](https://nc-news-200.herokuapp.com/)_**
+**_[Interact with api](https://be-nc-news-pmo9.onrender.com/api/)_**
 
 ### Front-End
 
-**_[Front-End Repo ](https://github.com/BalliAsghar/NC-News-FrontEnd)_**
+**_[Front-End Repo ]https://github.com/Raj14619/nc-news/)**
 
 ## Summary
 
