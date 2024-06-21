@@ -1,61 +1,122 @@
-Summary
+# NCNews
+
+**Api Built with ExpressJS & PSQL**
+
+**_[Interact with api](https://nc-news-200.herokuapp.com/)_**
+
+### Front-End
+
+**_[Front-End Repo ](https://github.com/BalliAsghar/NC-News-FrontEnd)_**
+
+## Summary
+
 We will be building an API for the purpose of accessing application data programmatically. The intention here is to mimic the building of a real world backend service (such as reddit) which should provide this information to the front end architecture.
 
-Tech Stack
-Back-End: Node, ExpressJS, PSQL
+## Tech Stack
 
-Development: Nodemon, Supertest, Jest, Jest-Sorted
+**Back-End:** Node, ExpressJS, PSQL
 
-Installation
+**Development:** Nodemon, Supertest, Jest, Jest-Sorted
+
+## Installation
+
 Install Nc-News
 
-Make sure you have git Installed
+##### Make sure you have **git** Installed
+
+```bash
  $ git clone https://github.com/BalliAsghar/Nc-News
-Project Requirements
+```
+
+#### Project Requirements
+
+```
 $ node -v
 >= v16.6.1
 $ postgres -V
 >= 14.0
-Create two .env files in Project Root directory
+```
+
+#### Create two .env files in Project Root directory
+
 1:
 
+```
 $ touch .env.development
+```
+
 2:
 
+```
 $ touch .env.test
-Add database config to envs
+```
+
+#### Add database config to envs
+
 1: .env.test
 
+```
 PGDATABASE=nc_news_test
+```
+
 2: .env.development
 
+```
 PGDATABASE=nc_news
-Install dependencies
+```
+
+#### Install dependencies
+
+```
 $ npm install
-Seed database
+```
+
+#### Seed database
+
+```
 $ npm run setup-dbs
 $ npm run seed
-To Run Server
+```
+
+### To Run Server
+
+```bash
   npm run start
-To Run Tests
+```
+
+### To Run Tests
+
+```bash
   npm run test
-Endpoints
+```
+
+# Endpoints
+
 All the available Endpoints
 
-Index Route
-GET / 
+## Index Route
 
-Response
+`GET / `
+
+## Response
+
+```bash
 {"message":"Hello"}
-Api Route
-GET /api
+```
 
-Serves up a json representation of all the available endpoints of the api
+## Api Route
 
-Get Topics
-/api/topics
+`GET /api`
 
-Response
+**_Serves up a json representation of all the available endpoints of the api_**
+
+### Get Topics
+
+`/api/topics`
+
+## Response
+
+```json
 {
     "topics": [
     {
@@ -65,17 +126,23 @@ Response
     ....
 ]
 }
-Get Articles
-GET /api/articles
+```
+
+## Get Articles
+
+`GET /api/articles`
 
 accept queries:
 
-sort_by, which sorts the articles by any valid column (defaults to date)
-order, which can be set to asc or desc for ascending or descending (defaults to descending)
-topic, which filters the articles by the topic value specified in the query
-limit, which limits the number of responses (defaults to 10)
-p, stands for page which specifies the page at which to start (calculated using limit)
-Response
+- `sort_by`, which sorts the articles by any valid column (defaults to date)
+- `order`, which can be set to `asc` or `desc` for ascending or descending (defaults to descending)
+- `topic`, which filters the articles by the topic value specified in the query
+- `limit`, which limits the number of responses (defaults to 10)
+- `p`, stands for page which specifies the page at which to start (calculated using limit)
+
+## Response
+
+```json
 {
   "Articles": [
     {
@@ -90,10 +157,15 @@ Response
     ....
   ]
 }
-GET Article By Id
-GET /api/articles/:articles_id
+```
 
-Response
+### GET Article By Id
+
+`GET /api/articles/:articles_id`
+
+## Response
+
+```json
 // /api/articles/1
 {
   "Article": {
@@ -107,14 +179,19 @@ Response
     "comment_count": 8
   }
 }
-Update Article vote
-PATCH /api/articles/:article_id
+```
 
-Request body accepts: { inc_votes: newVote }
+## Update Article vote
 
-Note: newVote should be Number
+`PATCH /api/articles/:article_id`
 
-Response
+**Request body accepts:** `{ inc_votes: newVote }`
+
+**Note:** newVote should be **Number**
+
+## Response
+
+```json
 // PATCH /api/articles/1
 // example request body { inc_votes: 1 }
 {
@@ -128,10 +205,15 @@ Response
     "created_at": "2020-11-07T00:00:00.000Z"
   }
 }
-Get Comments for corresponding Articles
-GET /api/articles/:article_id/comments
+```
 
-Response
+## Get Comments for corresponding Articles
+
+`GET /api/articles/:article_id/comments`
+
+## Response
+
+```json
 // GET /api/articles/1/comments
 {
   "comments": [
@@ -146,14 +228,20 @@ Response
     ....
   ]
 }
-Post a comment on article
-POST /api/articles/:article_id/comments
+```
 
-Request body accepts: {username: username, body: comment }
+## Post a comment on article
 
-Example request body { "username": "tickle122", "body": "This is a Comment" }
+`POST /api/articles/:article_id/comments`
 
-Response
+**Request body accepts:** `{username: username, body: comment }`
+
+_Example request body_
+`{ "username": "tickle122", "body": "This is a Comment" }`
+
+## Response
+
+```json
 // POST /api/articles/1/comments
 
 // Response
@@ -167,16 +255,23 @@ Response
     "body": "Comment"
   }
 }
-Delete comment By ID
-DELETE /api/comments/:comment_id
+```
 
-NOTE: *This endpoint sends back 204 Status code on successful request , NO body
+## Delete comment By ID
 
-Users
-Get Users
-GET /api/users
+`DELETE /api/comments/:comment_id`
 
-Response
+**NOTE:** \*This endpoint sends back **204** Status code on successful request , NO **body**
+
+# Users
+
+## Get Users
+
+`GET /api/users`
+
+## Response
+
+```json
 {
   "users": [
     {
@@ -188,10 +283,15 @@ Response
     ....
   ]
 }
-Get User By Id
-GET /api/users/:username
+```
 
-Response
+## Get User By Id
+
+`GET /api/users/:username`
+
+## Response
+
+```json
 {
 // GET - /api/users/tickle122
 {
@@ -201,12 +301,17 @@ Response
     "name": "Tom Tickle"
   }
 }
-Update Comment Vote
-PATCH /api/comments/:comment_id
+```
 
-Response
-Request body accepts: { inc_votes: newVote }
+# Update Comment Vote
 
+`PATCH /api/comments/:comment_id`
+
+## Response
+
+**Request body accepts:** `{ inc_votes: newVote }`
+
+```json
 //PATCH /api/comments/4/comments
 // example request body { inc_votes: 1 }
 {
@@ -219,3 +324,4 @@ Request body accepts: { inc_votes: newVote }
     "body": "Nobis consequatur animi. Ullam nobis quaerat voluptates veniam."
   }
 }
+```
